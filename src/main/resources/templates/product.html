@@ -7,10 +7,7 @@
 </head>
 <body>
     <h1>List Sony Products</h1>
-    <div>
-        <a th:href="@{/products/create}">Add new product</a>
-    </div>
-
+    <a style="text-align: center" th:href="@{/products/create}">Add new product</a>
 
     <div th:if="${products.isEmpty()}">
         <p style="color:red">List is empty</p>

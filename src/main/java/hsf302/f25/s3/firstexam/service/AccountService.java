@@ -11,17 +11,16 @@ import org.springframework.stereotype.Service;
 public class AccountService {
     private final AccountRepository accountRepository;
 
-    public void deleteById(Integer id) {
-        accountRepository.deleteById(id);
+    public Account authenticate(String phone,String password){
+        Account account = accountRepository.findByPhone(phone);
+        if(account !=null && account.getPassword().equals(password)){
+            return account;
+        }
+        return null;
     }
 
-    public Account findById(Integer id) {
-        return accountRepository.findById(id).orElse(null);
+    public boolean isAdminOrStaff(Account account){
+        return account != null && (account.getRoleId().equals(1) || account.getRoleId().equals(2));
     }
-
-    public void save(Account account) {
-        accountRepository.save(account);
-    }
-
 
 }

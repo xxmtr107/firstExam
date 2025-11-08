@@ -37,11 +37,11 @@ public class ProductController {
         return "product-form";
     }
 
-    @GetMapping("/create/{id}")
-    public String createProduct(@PathVariable Integer id, Model model) {
+    @GetMapping("/create")
+    public String createProduct(Model model) {
         model.addAttribute("products", new Product());
         model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("formMode", "update");
+        model.addAttribute("formMode", "create");
         return "product-form";
     }
 

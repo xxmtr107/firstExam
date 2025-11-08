@@ -2,10 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pham Minh Triet - Login Page</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-
+    <p th:if="${error}" th:text="${error}" style="color:pink"></p>
+    <form th:action="@{/auth}" method="POST">
+        <div>
+            <label for="phone">Phone: </label>
+            <input id="phone" type="text" name="phone" required/>
+        </div>
+        <div>
+            <label for="pass">Password: </label>
+            <input id="pass" type="password" name="password" required/>
+        </div>
+        <button type="submit">Login</button>
+    </form>
 </body>
 </html>

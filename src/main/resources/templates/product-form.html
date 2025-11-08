@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pham Minh Triet - Login Page </title>
+    <title>Pham Minh Triet - Edit Product Page </title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
@@ -32,10 +32,10 @@
             <div>
                 <label for= "cate">Category Name</label>
                 <select id="cate" th:field="*{cate}">
-                    <option th:each="x :${categories}"
+                    <option th:each="x : ${categories}"
                             th:value="${x.cateId}"
-                            th:text="${x.categoryName}"
-                            th:selected="${products.cate!=null and products.cate.cateId==x.c}">
+                            th:text="${x.cateName}"
+                            th:selected="${products.cate !=null and products.cate.cateId == x.cateId}">
                     </option>
                 </select>
             </div>
