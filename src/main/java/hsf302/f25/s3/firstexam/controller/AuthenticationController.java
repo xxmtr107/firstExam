@@ -38,8 +38,9 @@ public class AuthenticationController {
             model.addAttribute("error", "Invalid phone or password!");
             return "login";
         }
-        if(!accountService.isAdminOrStaff(account)){
+        if(!accountService.isStaff(account) || !accountService.isAdmin(account)) {
             model.addAttribute("error", "You do not have permission to access this function!");
+            return "login";
         }
         session.setAttribute("account", account);
         return "redirect:/products";

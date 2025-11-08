@@ -19,8 +19,11 @@ public class AccountService {
         return null;
     }
 
-    public boolean isAdminOrStaff(Account account){
-        return account != null && (account.getRoleId().equals(1) || account.getRoleId().equals(2));
+    public boolean isAdmin(Account account){
+        return account != null && (account.getRoleId().equals(1));
     }
 
+    public boolean isStaff(Account account){
+        return account != null && (account.getRoleId().equals(2));
+    }
 }
