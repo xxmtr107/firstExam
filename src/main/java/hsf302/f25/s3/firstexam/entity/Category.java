@@ -26,6 +26,6 @@ public class Category {
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
     String status;
 
-    @OneToMany(mappedBy = "cateId")
+    @OneToMany(mappedBy = "cate")
     List<Product> products;
 }

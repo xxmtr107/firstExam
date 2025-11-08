@@ -55,25 +55,25 @@ public class DataIntializer implements CommandLineRunner {
                 .productName("Alpha 1 II - Full-frame Mirrorless")
                 .price(6000)
                 .stock(3)
-                .cateId(categoryRepository.findById(2).orElse(null))
+                .cate(categoryRepository.findById(2).orElse(null))
                 .build());
         productRepository.save(Product.builder()
                 .productName("Alpha 7C II – Full-frame")
                 .price(2000)
                 .stock(5)
-                .cateId(categoryRepository.findById(2).orElse(null))
+                .cate(categoryRepository.findById(2).orElse(null))
                 .build());
         productRepository.save(Product.builder()
                 .productName("BRAVIA 8 OLED 4K HDR TV")
                 .price(2500)
                 .stock(10)
-                .cateId(categoryRepository.findById(3).orElse(null))
+                .cate(categoryRepository.findById(3).orElse(null))
                 .build());
         productRepository.save(Product.builder()
                 .productName("LinkBuds Fit Truly Wireless Noise Canceling")
                 .price(180)
                 .stock(15)
-                .cateId(categoryRepository.findById(1).orElse(null))
+                .cate(categoryRepository.findById(1).orElse(null))
                 .build());
     }
 }

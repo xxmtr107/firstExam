@@ -34,7 +34,7 @@ public class Product {
     @Column(name = "created_at")
     LocalDateTime createdAt;
     @ManyToOne(fetch = FetchType.EAGER)
-    Category cateId;
+    Category cate;
 
     @PrePersist
     public void onCreate() {

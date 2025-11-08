@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Pham Minh Triet -  Sony Management Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
-    <table>
+    <h1>List Sony Products</h1>
+    <div>
+        <a th:href="@{/products/create}">Add new product</a>
+    </div>
+
+
+    <div th:if="${products.isEmpty()}">
+        <p style="color:red">List is empty</p>
+    </div>
+    <table th:if="${!products.isEmpty()}">
         <thead>
         <tr>
             <th>ProductID</th>
@@ -18,7 +28,19 @@
         </tr>
         </thead>
         <tbody>
-
+        <tr th:each="x: ${products}">
+            <td th:text="${x.productId}"></td>
+            <td th:text="${x.productName}"></td>
+            <td th:text="${x.price}"></td>
+            <td th:text="${x.stock}"></td>
+            <td th:text="${#temporals.format(x.createdAt,'dd-MM-yyyy')}"></td>
+            <th th:text="${x.cate.cateName}"></th>
+            <th>
+                <a th:href="@{/products/update/{id}(id= ${x.productId})}">Update</a>
+                <a th:href="@{/products/delete/{id}(id=${x.productId})}"
+                onclick="return confirm('Are you sure?');">Delete</a>
+            </th>
+        </tr>
         </tbody>
     </table>
 </body>

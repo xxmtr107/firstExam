@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pham Minh Triet - Login Page </title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
+    <div>
+        <h1 th:if="${formMode=='update'}">Update Product</h1>
+        <h1 th:if="${formMode=='create'}">Create Product</h1>
+        <form th:action="@{/products/save}" th:object="${products}" method="POST">
+            <div th:if ="${formMode=='update'}">
+                <label for = "id">Id</label>
+                <input type="text" id="id" th:field="*{productId}" readonly />
+            </div>
+            <div>
+                <label for= "name">Product Name</label>
+                <input id ="name" type="text" th:field="*{productName}"/>
+                <span th:errors="*{productName}" style="color:red"></span>
+            </div>
+            <div>
+                <label for= "price">Price</label>
+                <input id ="price" type="text" th:field="*{price}"/>
+                <span th:errors="*{price}" style="color:red"></span>
+            </div>
+            <div>
+                <label for= "stock">Stock</label>
+                <input id ="stock" type="text" th:field="*{stock}"/>
+                <span th:errors="*{stock}" style="color:red"></span>
+            </div>
+            <div>
+                <label for= "cate">Category Name</label>
+                <select id="cate" th:field="*{cate}">
+                    <option th:each="x :${categories}"
+                            th:value="${x.cateId}"
+                            th:text="${x.categoryName}"
+                            th:selected="${products.cate!=null and products.cate.cateId==x.c}">
+                    </option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+            <div>
+                <input type="hidden" name="mode" th:value="${formMode}"/>
+            </div>
+            <a th:href="@{/products}">Back to list</a>
+        </form>
+    </div>
 
 </body>
 </html>
